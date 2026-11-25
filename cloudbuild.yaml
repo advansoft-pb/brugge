@@ -1,0 +1,16 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - --build-arg
+      - SERVICE=${_SERVICE}
+      - -t
+      - ${_IMAGE}
+      - .
+images:
+  - ${_IMAGE}
+substitutions:
+  _SERVICE: order-service
+  _IMAGE: example.invalid/saga-demo/order-service:latest
+options:
+  logging: CLOUD_LOGGING_ONLY
